@@ -1,0 +1,43 @@
+{
+  "name": "toddle-task",
+  "version": "1.0.0",
+  "description": "Backend for toddle task",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinkrish/toddle-task.git"
+  },
+  "keywords": [],
+  "author": "Vinay K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinkrish/toddle-task/issues"
+  },
+  "homepage": "https://github.com/vinkrish/toddle-task#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "app-root-path": "^3.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-combine-routers": "^4.0.2",
+    "koa-compose": "^4.1.0",
+    "koa-router": "^8.0.8",
+    "sharp": "^0.25.4"
+  }
+}
