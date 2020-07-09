@@ -27,7 +27,7 @@ router.post('/login', async (ctx, next) => {
   if (!user) {
     user = await models.users.create(data)
   }
-  const token = jwt.sign({ userId: user.USER_ID }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET, {
     expiresIn: 86400 // expires in 24 hours
   })
   ctx.body = { token }
