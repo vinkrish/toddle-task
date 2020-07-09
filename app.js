@@ -13,7 +13,7 @@ app.use(bodyParser())
 app.use(router())
 
 models.sequelize.sync().then(function () {
-  app.listen(process.env.APP_PORT || 8000, function () {
+  app.listen(process.env.APP_PORT || 3000, function () {
     console.log('app started!')
   })
 })
