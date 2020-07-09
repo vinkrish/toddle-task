@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "285800ab-8557-4dd2-8543-0f931babc27c",
+		"name": "Toddle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{toddle_url}}",
+					"host": [
+						"{{toddle_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29f70cc0-22cd-4eb9-998d-93174d940c53",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"toddle_token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"vin\",\n\t\"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{toddle_url}}/user/login",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Survey",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{toddle_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"Your Interests 1\",\n\t\"questions\": [\"Are you Human?\", \"Do you like Cats?\", \"Do you watch football?\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{toddle_url}}/survey/new",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"survey",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{toddle_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{toddle_url}}/survey/1",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"survey",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take Survey",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{toddle_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"survey\": [\n        {\n            \"questionId\": 1,\n            \"surveyId\": 1,\n            \"question\": \"Are you Human?\",\n            \"answer\": \"yes\"\n        },\n        {\n            \"questionId\": 2,\n            \"surveyId\": 1,\n            \"question\": \"Do you like Cats?\",\n            \"answer\": \"yes\"\n        },\n        {\n            \"questionId\": 3,\n            \"surveyId\": 1,\n            \"question\": \"Do you watch football?\",\n            \"answer\": \"yes\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{toddle_url}}/survey",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey Result",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{toddle_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{toddle_url}}/survey/result/1",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"survey",
+						"result",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Thumbnail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba8b1a8a-38ed-416b-8a3f-e6de044cf2d4",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "big_img",
+							"type": "file",
+							"src": []
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{toddle_url}}/image",
+					"host": [
+						"{{toddle_url}}"
+					],
+					"path": [
+						"image"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8355127d-bf6a-46c6-96d2-c58d2539b590",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ef54aaee-b6fe-4d96-b70e-d64ab61ec064",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d0bc24c6-346b-411c-a7ca-e4d602fd5417",
+			"key": "toddle_token",
+			"value": "token",
+			"type": "string"
+		},
+		{
+			"id": "af9c709a-13da-4661-8667-0a8ca633ac54",
+			"key": "toddle_url",
+			"value": "https://toddle-task.herokuapp.com",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
