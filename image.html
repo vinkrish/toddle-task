@@ -1,0 +1,28 @@
+<!doctype html>
+<body>
+<form id="formElem">
+  Image: <input type="file" name="big_img" accept="image/*">
+  <input type="submit">
+</form>
+<br>
+<img id="image" src="">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+
+    axios
+      .post('http://localhost:8000/image', new FormData(formElem), { responseType: 'arraybuffer' })
+      .then(res => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'thumbnail.png');
+        document.body.appendChild(link);
+        link.click();
+        document.getElementById('image').src = url;
+      })
+      .catch(err => {})
+  };
+</script>
+</body>
