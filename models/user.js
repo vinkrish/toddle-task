@@ -18,6 +18,5 @@ module.exports = (sequelize, DataTypes) => sequelize.define('users', {
     field: 'PASSWORD'
   }
 }, {
-  tableName: 'users',
-  timestamps: false
+  tableName: 'users'
 })

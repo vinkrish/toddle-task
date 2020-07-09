@@ -7,23 +7,20 @@ module.exports = (sequelize, DataTypes) => sequelize.define('survey', {
     unique: true,
     field: 'SURVEY_ID'
   },
-  username: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-    field: 'USER_NAME'
+  userId: {
+    type: DataTypes.BIGINT,
+    allowNull: true,
+    references: {
+      model: 'users',
+      key: 'USER_ID'
+    },
+    field: 'USER_ID'
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
     field: 'DESCRIPTION'
-  },
-  createDateTime: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-    field: 'CREATE_DATE_TIME'
   }
 }, {
-  tableName: 'survey',
-  timestamps: false
+  tableName: 'survey'
 })

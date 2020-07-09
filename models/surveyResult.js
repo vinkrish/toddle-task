@@ -16,23 +16,29 @@ module.exports = (sequelize, DataTypes) => sequelize.define('surveyResult', {
     },
     field: 'SURVEY_ID'
   },
-  username: {
-    type: DataTypes.STRING(50),
+  questionId: {
+    type: DataTypes.BIGINT,
     allowNull: false,
-    field: 'USER_NAME'
+    references: {
+      model: 'survey_question',
+      key: 'QUESTION_ID'
+    },
+    field: 'QUESTION_ID'
+  },
+  userId: {
+    type: DataTypes.BIGINT,
+    allowNull: true,
+    references: {
+      model: 'users',
+      key: 'USER_ID'
+    },
+    field: 'USER_ID'
   },
   answer: {
     type: DataTypes.INTEGER(1),
     allowNull: false,
     field: 'ANSWER'
-  },
-  createDateTime: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-    field: 'CREATE_DATE_TIME'
   }
 }, {
-  tableName: 'survey_result',
-  timestamps: false
+  tableName: 'survey_result'
 })
