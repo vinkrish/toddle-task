@@ -4,7 +4,9 @@ const cors = require('@koa/cors')
 const bodyParser = require('koa-bodyparser')
 const router = require('./routes')
 
-dotenv.config()
+if (process.env.NODE_ENV === 'development') {
+  dotenv.config()
+}
 var models = require('./models')
 
 const app = new Koa()
