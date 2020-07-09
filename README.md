@@ -2,7 +2,7 @@
 
 ## To use postman api collection
 
-Environment variables are used to store url and generated token in postman collection, so need to modify any values.
+Environment variables are used to store url and generated token in postman collection, so no need to modify any values.
 
 ### Step 1: Login
 
@@ -26,7 +26,7 @@ Environment variables are used to store url and generated token in postman colle
 
 ### Step 4: Take Survey
 
-- All the questions/answers in a survey is sent as survey array as JSON data
+- All the questions/answers in a survey are sent as array in JSON data
 - Answers can only be 'yes' or 'no', request fails if answer is any other values
 - Decoded userId from token is used to identify who answered the survey
 
@@ -39,6 +39,6 @@ Environment variables are used to store url and generated token in postman colle
 
 - Select file in body's form-data
 - Image is resized to 50x50 px
-- Can view resized image response body of postman
+- Can view resized image in response body of postman
 
-Also Included image.html which uses axios library to download image and display in html, created this first and realised image is visible in postman as well so not necessary.
+Also Included **image.html** which uses axios library to download image and display in html, created this first and realised image is visible in postman as well so not necessary.
