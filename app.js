@@ -19,3 +19,5 @@ models.sequelize.sync().then(function () {
     console.log('app started!')
   })
 })
+
+module.exports = app
