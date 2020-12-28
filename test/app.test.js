@@ -7,6 +7,6 @@ describe('GET /', function() {
       request(server)
       .get('/')
       .expect(200)
-      .expect('Welcome to Toddle App deployed by Jenkins!', done)
+      .expect('Welcome to Toddle App!', done)
     })
 })
