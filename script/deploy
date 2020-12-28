@@ -1,8 +1,9 @@
 #!/bin/sh
 ssh ubuntu@3.238.159.47 <<EOF
  cd ~/toddle-task
+ git stash
  git pull
- npm install — production
+ npm install - production
  pm2 restart all
  exit
 EOF
