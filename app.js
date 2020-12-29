@@ -14,16 +14,10 @@ app.use(cors())
 app.use(bodyParser())
 app.use(router())
 
-const init = async () => {
-  // await models.sequelize.sync({force: true}) // force true will drop the table if it already exists
-  await models.sequelize.sync()
-  console.log('Tables have synced!')
-}
-
-init()
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('app started!')
+models.sequelize.sync().then(function () {
+  app.listen(process.env.PORT || 3000, function () {
+    console.log('app started!')
+  })
 })
 
 module.exports = app
