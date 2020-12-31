@@ -16,7 +16,7 @@ app.use(router())
 
 models.sequelize.sync().then(function () {
   app.listen(process.env.PORT || 3000, function () {
-    console.log('app started!')
+    console.log('app successfully started!')
   })
 })
 
